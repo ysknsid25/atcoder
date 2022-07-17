@@ -2,6 +2,7 @@
 
 //数字の入力
 fscanf(STDIN, "%d", $orange);
+[$N, $X, $Y, $Z] = explode(' ', trim($inputs[0]));
 
 //文字列の入力
 $word = str_replace(array("\r\n", "\r", "\n"), "", fgets(STDIN));

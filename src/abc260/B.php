@@ -16,53 +16,52 @@ for ($i = 0; $i < count($mathscores); $i++) {
     $engscore = $engscores[$i];
   }
   $totalscore = $mathscore + $engscore;
-  $scoreArr["m"][$i] = $mathscore;
-  $scoreArr["e"][$i] = $engscore;
-  $scoreArr["t"][$i] = $totalscore;
+  $scoreArr["m"][$i] = (int)$mathscore;
+  $scoreArr["e"][$i] = (int)$engscore;
+  $scoreArr["t"][$i] = (int)$totalscore;
 }
 
 $okarr = array();
 
-arsort($scoreArr["m"]);
-$cnt = 0;
-foreach ($scoreArr["m"] as $no => $score) {
-  if (count($okarr) >= $N || $cnt == $X) {
-    break;
+$howmanypasses = $X + $Y + $Z;
+$howmanypeople = count($mathscores);
+if ($howmanypasses < $N) {
+  sqeezeClear($scoreArr["m"], $okarr, $N, $X);
+  sqeezeClear($scoreArr["e"], $okarr, $N, $Y);
+  sqeezeClear($scoreArr["t"], $okarr, $N, $Z);
+} else {
+  for ($i = 0; $i < $N; $i++) {
+    $okarr[] = $i;
   }
-  $okarr[] = $no;
-  unset($scoreArr["e"][$no]);
-  unset($scoreArr["t"][$no]);
-  $cnt++;
-}
-
-arsort($scoreArr["e"]);
-$cnt = 0;
-foreach ($scoreArr["e"] as $no => $score) {
-  if (count($okarr) >= $N || $cnt == $Y) {
-    break;
-  }
-  if (in_array($no, $okarr)) {
-    continue;
-  }
-  $okarr[] = $no;
-  unset($scoreArr["t"][$no]);
-  $cnt++;
-}
-
-arsort($scoreArr["t"]);
-$cnt = 0;
-foreach ($scoreArr["t"] as $no => $score) {
-  if (count($okarr) >= $N ||  $cnt == $Z) {
-    break;
-  }
-  if (in_array($no, $okarr)) {
-    continue;
-  }
-  $okarr[] = $no;
-  $cnt++;
 }
 
 asort($okarr);
+$lastIndex = count($okarr) - 1;
+$cnt = 0;
 foreach ($okarr as $no) {
-  echo ($no + 1) . "\n";
+  $no += 1;
+  if ($cnt != $lastIndex) {
+    $no  .= "\n";
+  }
+  echo $no;
+  $cnt++;
+}
+
+/**
+ * 合格者を抽出する
+ */
+function sqeezeClear(&$scoreArr, &$okArr, $total, $thiskamoku)
+{
+  arsort($scoreArr);
+  $cnt = 0;
+  foreach ($scoreArr as $no => $score) {
+    if (count($okArr) >= $total ||  $cnt == $thiskamoku) {
+      break;
+    }
+    if (in_array($no, $okArr)) {
+      continue;
+    }
+    $okArr[] = $no;
+    $cnt++;
+  }
 }
