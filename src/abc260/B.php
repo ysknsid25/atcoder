@@ -7,14 +7,8 @@ $engscores = explode(' ', trim(fgets(STDIN)));
 
 $scoreArr = array();
 for ($i = 0; $i < count($mathscores); $i++) {
-  $mathscore = 0;
-  if ($mathscores[$i] > 0) {
-    $mathscore = $mathscores[$i];
-  }
-  $engscore = 0;
-  if ($engscores[$i] > 0) {
-    $engscore = $engscores[$i];
-  }
+  $mathscore = $mathscores[$i];
+  $engscore = $engscores[$i];
   $totalscore = $mathscore + $engscore;
   $scoreArr["m"][$i] = $mathscore;
   $scoreArr["e"][$i] = $engscore;
@@ -24,7 +18,6 @@ for ($i = 0; $i < count($mathscores); $i++) {
 $okarr = array();
 
 $howmanypasses = $X + $Y + $Z;
-$howmanypeople = count($mathscores);
 if ($howmanypasses < $N) {
   sqeezeClear($scoreArr["m"], $okarr, $N, $X);
   sqeezeClear($scoreArr["e"], $okarr, $N, $Y);
