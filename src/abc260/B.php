@@ -16,9 +16,9 @@ for ($i = 0; $i < count($mathscores); $i++) {
     $engscore = $engscores[$i];
   }
   $totalscore = $mathscore + $engscore;
-  $scoreArr["m"][$i] = (int)$mathscore;
-  $scoreArr["e"][$i] = (int)$engscore;
-  $scoreArr["t"][$i] = (int)$totalscore;
+  $scoreArr["m"][$i] = $mathscore;
+  $scoreArr["e"][$i] = $engscore;
+  $scoreArr["t"][$i] = $totalscore;
 }
 
 $okarr = array();
