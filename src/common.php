@@ -34,3 +34,7 @@ $r = sqrt(($a * $a + $b * $b));
 //ラジアンからcos(x座標), sin(y座標)を導出する
 $x = cos($afterRad);
 $y = sin($afterRad);
+
+//日時の取得
+//https://qiita.com/shuntaro_tamura/items/b7908e6db527e1543837
+$datetime = date("h:i", strtotime('+100 minute', strtotime("21:00")));
