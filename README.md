@@ -1,28 +1,7 @@
-# AtCoder Local環境
+# Dockerで構築
 
-https://qiita.com/Adaachill/items/3d4ddad56c5c2cc372cd
-を参考に。
+xdebugをぶち込んでデバッグできるようにしている。
 
-Ubuntuにこいつを放り込む。
+## テストケースの場所
 
-```
-pip install online-judge-tools
-npm -g install atcoder-cli
-```
-
-詳しいやり方は[これ](https://github.com/online-judge-tools/oj/blob/master/docs/INSTALL.ja.md)を参考にした。
-
-## Ubuntuで使ってるから、Ubuntuを立ち上げてコマンドを叩く
-
-cd /mnt/m/project/atcoder/
-
-## コンテスト用フォルダの作成
-
-アドレスバーのケツのコンテストIDを取得する。
-取得したら以下のコマンドを叩く。
-
-```
-acc new コンテストID
-```
-
-
+https://www.dropbox.com/sh/nx3tnilzqz7df8a/AAAYlTq2tiEHl5hsESw6-yfLa?dl=0
