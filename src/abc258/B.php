@@ -1,16 +1,14 @@
 <?php
 
-$inputs = getInputs();
-
-$N = (int)$inputs[0];
+fscanf(STDIN, "%d", $N);
 
 $lattice = array();
 $max = 0;
 for ($i = 1; $i < ($N + 1); $i++) {
-  $inputs2 = str_split(trim(str_replace(array("\r\n", "\r", "\n"), "", $inputs[$i])));
+  $inputs = str_split(trim(fgets(STDIN)));
   for ($j = 1; $j < ($N + 1); $j++) {
     $index = $j - 1;
-    $lattice[$i][$j] = $inputs2[$index];
+    $lattice[$i][$j] = $inputs[$index];
   }
   $tmpmax = max($lattice[$i]);
   if ($tmpmax > $max) {
@@ -22,7 +20,7 @@ $maxValues = array();
 foreach ($lattice as $i => $rows) {
   foreach ($rows as $j => $val) {
     if ($val === $max) {
-      $maxValues[$i][$j] = $max; //適当
+      $maxValues[$i][$j] = $max;
     }
   }
 }
