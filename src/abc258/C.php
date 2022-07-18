@@ -1,15 +1,16 @@
 <?php
 
-$inputs = getInputs();
-
-[$n, $q] = explode(' ', trim($inputs[0]));
-$s = str_replace(array("\r\n", "\r", "\n"), "", $inputs[1]);
+fscanf(STDIN, "%d %d", $n, $q);
+$s = str_replace(array("\r\n", "\r", "\n"), "", fgets(STDIN));
 
 $typeArr = array();
 $targetArr = array();
 for ($i = 0; $i < $q; $i++) {
-  [$v, $x] = explode(' ', trim($inputs[($i + 2)]));
+  fscanf(STDIN, "%d %d", $v, $x);
   if ($v == "1") {
+    if ($n == $x) {
+      continue;
+    }
     $s = execquery1($s, $x);
   } else {
     execquery2($s, $x);
@@ -34,18 +35,4 @@ function execquery2($s, $x)
   $beginPosi = $x - 1;
   $result = substr($s, $beginPosi, 1);
   echo $result . "\n";
-}
-
-/**
- * テスト用にファイルからサンプルデータを受け取る
- */
-function getInputs()
-{
-  $retArr = array();
-  $file = fopen("sample.txt", "r");
-  while ($line = fgets($file)) {
-    $retArr[] = $line;
-  }
-  fclose($file);
-  return $retArr;
 }
