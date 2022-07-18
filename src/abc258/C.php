@@ -11,9 +11,9 @@ for ($i = 0; $i < $q; $i++) {
     if ($n == $x) {
       continue;
     }
-    $s = execquery1($s, $x);
+    $s = execquery1($s, (int)$x);
   } else {
-    execquery2($s, $x);
+    execquery2($s, (int)$x);
   }
 }
 
