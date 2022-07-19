@@ -1,23 +1,27 @@
 <?php
-fscanf(STDIN, "%d %d $d", $n, $k, $q);
+fscanf(STDIN, "%d %d %d", $n, $k, $q);
 $initPosi = explode(' ', trim(fgets(STDIN)));
 $query = explode(' ', trim(fgets(STDIN)));
 
+$lastRight = $n - 1;
+
 $komaExists = array();
 $komaPosi = array();
-for ($i = 0; $i < $n; $i++) {
+for ($i = 0; $i < $k; $i++) {
     $posi = $initPosi[$i] - 1;
     $komaExists[$posi] = true;
     $komaPosi[] = $posi;
 }
 
-$lastRight = $n - 1;
 foreach ($query as $target) {
     $targetkoma = $target - 1;
     $posi = $komaPosi[$targetkoma];
     $nextPosi = $posi + 1;
     if ($posi == $lastRight) {
         continue;
+    }
+    if (empty($komaExists[$nextPosi])) {
+        $komaExists[$nextPosi] = false;
     }
     $rightKomaExist = $komaExists[$nextPosi];
     if ($rightKomaExist) {
@@ -30,6 +34,7 @@ foreach ($query as $target) {
 
 $out = "";
 foreach ($komaPosi as $posi) {
-    $out = ($posi + 1) . " ";
+    $out .= ($posi + 1) . " ";
 }
-echo substr($out, -1);
+$out = substr($out, 0, -1);
+echo $out;
