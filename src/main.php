@@ -2,39 +2,41 @@
 
 $inputs = getInputs();
 
-[$n, $q] = explode(' ', trim($inputs[0]));
-$s = str_replace(array("\r\n", "\r", "\n"), "", $inputs[1]);
+[$n, $k, $q] = explode(' ', trim($inputs[0]));
+$initPosi = explode(' ', trim($inputs[1]));
+$query = explode(' ', trim($inputs[2]));
 
-$typeArr = array();
-$targetArr = array();
-for ($i = 0; $i < $q; $i++) {
-  [$v, $x] = explode(' ', trim($inputs[($i + 2)]));
-  if ($v == "1") {
-    $s = execquery1($s, $x);
-  } else {
-    execquery2($s, $x);
+$lastRight = $n - 1;
+
+$komaExists = array();
+$komaPosi = array();
+for ($i = 1; $i < $n; $i++) {
+  $posi = $initPosi[$i] - 1;
+  $komaExists[$posi] = true;
+  $komaPosi[] = $posi;
+}
+
+foreach ($query as $target) {
+  $targetkoma = $target - 1;
+  $posi = $komaPosi[$targetkoma];
+  $nextPosi = $posi + 1;
+  if ($posi == $lastRight) {
+    continue;
   }
+  $rightKomaExist = $komaExists[$nextPosi];
+  if ($rightKomaExist) {
+    continue;
+  }
+  $komaPosi[$targetkoma] = $nextPosi;
+  $komaExists[$posi] = false;
+  $komaExists[$nextPosi] = true;
 }
 
-function execquery1($s, $x)
-{
-  $retStr = $s;
-  $lastIndex = strlen($retStr);
-  $strBeginPosi = $lastIndex - $x;
-
-  $removedStr = substr($retStr, $strBeginPosi, $lastIndex);
-  $remainStr = substr($retStr, 0, $strBeginPosi);
-  $retStr = $removedStr . $remainStr;
-
-  return $retStr;
+$out = "";
+foreach ($komaPosi as $posi) {
+  $out = ($posi + 1) . " ";
 }
-
-function execquery2($s, $x)
-{
-  $beginPosi = $x - 1;
-  $result = substr($s, $beginPosi, 1);
-  echo $result . "\n";
-}
+echo substr($out, -1);
 
 /**
  * テスト用にファイルからサンプルデータを受け取る
