@@ -1,9 +1,7 @@
 <?php
 
-$inputs = getInputs();
-
-[$n] = explode(' ', trim($inputs[0]));
-$integers = explode(' ', trim($inputs[1]));
+fscanf(STDIN, "%d", $n);
+$integers = explode(' ', trim(fgets(STDIN)));
 
 $komaExistsArr = array();
 
@@ -30,17 +28,3 @@ for ($i = 0; $i < count($integers); $i++) {
 }
 
 echo $p;
-
-/**
- * テスト用にファイルからサンプルデータを受け取る
- */
-function getInputs()
-{
-  $retArr = array();
-  $file = fopen("sample.txt", "r");
-  while ($line = fgets($file)) {
-    $retArr[] = $line;
-  }
-  fclose($file);
-  return $retArr;
-}
