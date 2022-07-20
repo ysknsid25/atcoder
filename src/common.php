@@ -9,6 +9,7 @@ $word = str_replace(array("\r\n", "\r", "\n"), "", fgets(STDIN));
 
 //複数の整数入力
 $inputs = explode(' ', trim(fgets(STDIN)));
+[$n, $k] = explode(' ', trim(fgets(STDIN)));
 
 //後ろから一文字を削除
 $rest = substr($str, 0, -1);
