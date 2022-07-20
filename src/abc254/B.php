@@ -1,10 +1,5 @@
 <?php
-
-$inputs = getInputs();
-
-//ここから入れかえる
-
-[$n] = explode(' ', trim($inputs[0]));
+fscanf(STDIN, "%d", $n);
 $ai = array();
 $aij = array();
 for ($i = 0; $i < $n; $i++) {
@@ -30,21 +25,4 @@ for ($i = 0; $i < $n; $i++) {
   }
   $out = substr($out, 0, -1);
   echo $out . "\n";
-}
-
-
-//ここまで入れ替える
-
-/**
- * テスト用にファイルからサンプルデータを受け取る
- */
-function getInputs()
-{
-  $retArr = array();
-  $file = fopen("sample.txt", "r");
-  while ($line = fgets($file)) {
-    $retArr[] = $line;
-  }
-  fclose($file);
-  return $retArr;
 }
