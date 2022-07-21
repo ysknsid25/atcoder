@@ -65,3 +65,12 @@ function median($list)
     return ($list[floor(count($list) / 2)]);
   }
 }
+
+$aphaArr = [
+  "a", "b", "c", "d", "e",
+  "f", "g", "h", "i", "j",
+  "k", "l", "m", "n", "o",
+  "p", "q", "r", "s", "t",
+  "u", "v", "w", "x", "y",
+  "z"
+];
