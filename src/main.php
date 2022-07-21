@@ -4,33 +4,25 @@ $inputs = getInputs();
 
 //ここから入れかえる
 
-[$n] = explode(' ', trim($inputs[0]));
-$ai = array();
-$aij = array();
-for ($i = 0; $i < $n; $i++) {
-  $ai[$i] = $i + 1;
-  for ($j = 0; $j <= $i; $j++) {
-    if ($j == 0 || $j == $i) {
-      $aij[$i][$j] = 1;
-    } else {
-      $x = 0;
-      if (!empty($aij[($i - 1)][($j - 1)])) {
-        $x = $aij[($i - 1)][($j - 1)];
-      }
-      $y = 0;
-      if (!empty($aij[($i - 1)][$j])) {
-        $y = $aij[($i - 1)][$j];
-      }
-      $aij[$i][$j] = $x + $y;
-    }
+[$n, $k] = explode(' ', $inputs[0]);
+$foods = explode(' ', trim($inputs[1]));
+$dislikes = explode(' ', trim($inputs[2]));
+
+arsort($foods);
+$maxvalue = max($foods);
+$keys = array_keys($foods, $maxvalue);
+
+$hasDislike = "No";
+foreach ($keys as $key) {
+  $disLikeKey = $key + 1;
+  $result = array_search($disLikeKey, $dislikes);
+  if ($result !== false) {
+    $hasDislike = "Yes";
+    break;
   }
-  $out = "";
-  foreach ($aij[$i] as $j => $val) {
-    $out .= $val . " ";
-  }
-  $out = substr($out, 0, -1);
-  echo $out . "\n";
 }
+
+echo $hasDislike;
 
 
 //ここまで入れ替える

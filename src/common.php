@@ -50,6 +50,7 @@ $datetime = date("h:i", strtotime('+100 minute', strtotime("21:00")));
 $maxvalue = max($array);
 
 //配列内の値を検索。マッチした最初のキーを返す
+//見つからない場合はfalseを返す
 $result = array_search('PHP', $array);
 
 //配列内の値を検索。マッチした全てのキーを返す
