@@ -54,3 +54,14 @@ $result = array_search('PHP', $array);
 
 //配列内の値を検索。マッチした全てのキーを返す
 $result = array_keys($array, "PHP");
+
+//中央値を返す
+function median($list)
+{
+  sort($list);
+  if (count($list) % 2 == 0) {
+    return (($list[(count($list) / 2) - 1] + $list[((count($list) / 2))]) / 2);
+  } else {
+    return ($list[floor(count($list) / 2)]);
+  }
+}
