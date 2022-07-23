@@ -1,13 +1,10 @@
 <?php
 
-$inputs = getInputs();
-
-//ここから入れかえる
-[$n, $m] = explode(' ', trim($inputs[0]));
-$x = explode(' ', trim($inputs[1]));
+[$n, $m] = explode(' ', trim(fgets(STDIN)));
+$x = explode(' ', trim(fgets(STDIN)));
 $b = array();
 for ($i = 1; $i <= $m; $i++) {
-  [$c, $y] = explode(' ', trim($inputs[$i + 1]));
+  [$c, $y] = explode(' ', trim(fgets(STDIN)));
   $b[$c] = $y;
 }
 
@@ -30,19 +27,3 @@ for ($i = 1; $i <= $n; $i++) {
 $ans = max($score[$n]);
 
 echo $ans;
-
-//ここまで入れ替える
-
-/**
- * テスト用にファイルからサンプルデータを受け取る
- */
-function getInputs()
-{
-  $retArr = array();
-  $file = fopen("sample.txt", "r");
-  while ($line = fgets($file)) {
-    $retArr[] = $line;
-  }
-  fclose($file);
-  return $retArr;
-}
