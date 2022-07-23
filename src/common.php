@@ -90,3 +90,12 @@ ceil(3.14);
 //切り捨て
 floor(3.14);
 //→　3
+
+//文字列が全て大文字か
+ctype_upper($text);
+
+//文字列が全て小文字か
+ctype_lower($text);
+
+//配列内の同じ値をカウントする
+$result = array_count_values($arr);
