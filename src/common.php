@@ -99,3 +99,10 @@ ctype_lower($text);
 
 //配列内の同じ値をカウントする
 $result = array_count_values($arr);
+
+//配列を指定のサイズ、初期値で初期化する
+$a = array_fill(0, 3, '-');
+// $a == array('-', '-', '-')
+
+//2次元配列を初期化するにはこれ
+$a = array_fill(0, 3, array_fill(0, 2, 1));

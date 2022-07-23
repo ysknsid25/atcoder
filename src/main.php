@@ -2,22 +2,10 @@
 
 $inputs = getInputs();
 
-$n = $inputs[0];
+//ここから入れかえる
 
-$cntArr = array();
-for ($i = 1; $i <= $n; $i++) {
-  $word = str_replace(array("\r\n", "\r", "\n"), "", $inputs[$i]);
-  if (empty($cntArr[$word])) {
-    $cntArr[$word] = 1;
-  } else {
-    $cntArr[$word] += 1;
-  }
-  if ($cntArr[$word] === 1) {
-    echo $word . "\n";
-  } else {
-    echo $word . "(" . ($i - 1) . ")" . "\n";
-  }
-}
+$a = array_fill(0, 3, array_fill(0, 2, 1));
+var_dump($a);
 
 
 //ここまで入れ替える
