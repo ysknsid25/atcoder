@@ -3,26 +3,15 @@
 $inputs = getInputs();
 
 //ここから入れかえる
+[$La, $Ra, $Lb, $Rb] = explode(' ', trim($inputs[0]));
 
-[$n, $k] = explode(' ', $inputs[0]);
-$foods = explode(' ', trim($inputs[1]));
-$dislikes = explode(' ', trim($inputs[2]));
-
-arsort($foods);
-$maxvalue = max($foods);
-$keys = array_keys($foods, $maxvalue);
-
-$hasDislike = "No";
-foreach ($keys as $key) {
-  $disLikeKey = $key + 1;
-  $result = array_search($disLikeKey, $dislikes);
-  if ($result !== false) {
-    $hasDislike = "Yes";
-    break;
+$cnt = 0;
+for ($i = 0; $i <= 100; $i++) {
+  if ($La <= $i && $i <= $Ra && $Lb <= $i && $i <= $Rb) {
+    $cnt++;
   }
 }
-
-echo $hasDislike;
+echo $cnt;
 
 
 //ここまで入れ替える
