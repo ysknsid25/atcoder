@@ -2,16 +2,22 @@
 
 $inputs = getInputs();
 
-//ここから入れかえる
-[$La, $Ra, $Lb, $Rb] = explode(' ', trim($inputs[0]));
+$n = $inputs[0];
 
-$cnt = 0;
-for ($i = 0; $i <= 100; $i++) {
-  if ($La <= $i && $i <= $Ra && $Lb <= $i && $i <= $Rb) {
-    $cnt++;
+$cntArr = array();
+for ($i = 1; $i <= $n; $i++) {
+  $word = str_replace(array("\r\n", "\r", "\n"), "", $inputs[$i]);
+  if (empty($cntArr[$word])) {
+    $cntArr[$word] = 1;
+  } else {
+    $cntArr[$word] += 1;
+  }
+  if ($cntArr[$word] === 1) {
+    echo $word . "\n";
+  } else {
+    echo $word . "(" . ($i - 1) . ")" . "\n";
   }
 }
-echo $cnt;
 
 
 //ここまで入れ替える
