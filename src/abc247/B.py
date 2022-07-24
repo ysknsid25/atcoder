@@ -1,26 +1,12 @@
-def getInputFile():
-    f = open('M:\\project\\atcoder\\src\\sample.txt', 'r')
-    datalist = f.readlines()
-    f.close()
-    return datalist
-
-
-def removeReturncd(str):
-    return str.rstrip('\n')
-
-
-inputs = getInputFile()
-
-# ここから入れ替える
-n = int(inputs[0])
+n = int(input())
 
 adanaseiarr = []
 adanameiarr = []
 result = "Yes"
 for i in range(n):
-    s, t = inputs[i+1].split()
-    adanaseiarr.append(s.rstrip('\n'))
-    adanameiarr.append(t.rstrip('\n'))
+    s, t = input().split()
+    adanaseiarr.append(s)
+    adanameiarr.append(t)
 
 for i in range(n):
     sei = adanaseiarr[i]

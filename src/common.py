@@ -1,4 +1,7 @@
 # 文字列を受け取る場合
+from this import d
+
+
 S = input()
 
 # 整数を受け取る場合
@@ -45,3 +48,16 @@ list(test_str)
 
 # 配列の長さ
 len(arr)
+
+# マップにすでにキーがあるかどうかを確認する
+'key' in d
+
+# マップにすでに値があるかどうかを確認する
+'val' in d.values()
+
+# [s[i], t[i]]の配列の要素を順にSに取り出してループさせる
+for S in [s[i], t[i]]:
+    print(S)
+
+# 配列の要素の追加
+arr.append('youso')
