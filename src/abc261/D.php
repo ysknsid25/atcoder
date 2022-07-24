@@ -11,7 +11,7 @@ for ($i = 1; $i <= $m; $i++) {
 $score = array_fill(0, ($n + 1), array_fill(0, ($n + 1), -1));
 $score[0][0] = 0;
 for ($i = 1; $i <= $n; $i++) {
-  for ($j = 0; $j <= $n; $j++) {
+  for ($j = 0; $j <= $i; $j++) {
     if ($j === 0) {
       $score[$i][$j] = max($score[$i - 1]);
     } else {
