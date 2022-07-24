@@ -8,7 +8,7 @@ for ($i = 1; $i <= $m; $i++) {
   $b[$c] = $y;
 }
 
-$score = array_fill(0, ($n + 1), array_fill(0, ($n + 1), -1));
+$score = array();
 $score[0][0] = 0;
 for ($i = 1; $i <= $n; $i++) {
   for ($j = 0; $j <= $n; $j++) {

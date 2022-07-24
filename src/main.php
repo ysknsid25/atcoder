@@ -11,18 +11,27 @@ for ($i = 1; $i <= $m; $i++) {
   $b[$c] = $y;
 }
 
-$score = array_fill(0, ($n + 1), array_fill(0, ($n + 1), -1));
+$score = array();
 $score[0][0] = 0;
+$bkMax = 0;
 for ($i = 1; $i <= $n; $i++) {
+  $max = 0;
+  if ($i > 1) {
+    $max = $bkMax;
+  }
+  $bkMax = 0;
   for ($j = 0; $j <= $n; $j++) {
     if ($j === 0) {
-      $score[$i][$j] = max($score[$i - 1]);
+      $score[$i][$j] = $max;
     } else {
       $bonus = 0;
       if (!empty($b[$j])) {
         $bonus = $b[$j];
       }
       $score[$i][$j] = $score[$i - 1][$j - 1] + $x[($i - 1)] + $bonus;
+    }
+    if ($score[$i][$j] > $bkMax) {
+      $bkMax = $score[$i][$j];
     }
   }
 }
