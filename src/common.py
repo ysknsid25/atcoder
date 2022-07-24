@@ -39,3 +39,9 @@ mul_tbl = [[x * y for x in range(1, 4)] for y in range(1, 5)]  # 1~3, 1~4
 
 # 整数配列の生成
 b = list(range(m+1))
+
+# 文字列を配列に変換
+list(test_str)
+
+# 配列の長さ
+len(arr)
