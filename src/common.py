@@ -61,3 +61,13 @@ for S in [s[i], t[i]]:
 
 # 配列の要素の追加
 arr.append('youso')
+
+# 文字列型への変換
+str(notexistx)
+
+# 辞書をループで回す
+for k in d:
+    print(k)
+
+for v in d.values():
+    print(v)
