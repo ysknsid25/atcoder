@@ -71,3 +71,7 @@ for k in d:
 
 for v in d.values():
     print(v)
+
+# 平方根の計算
+import math
+math.sqrt(x)
