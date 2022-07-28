@@ -78,3 +78,6 @@ math.sqrt(x)
 
 # 辞書の初期化
 map = {"app": 1, "pen": 2}
+
+# 配列の要素に含まれる値の個数をカウントする
+arr.count('search')
