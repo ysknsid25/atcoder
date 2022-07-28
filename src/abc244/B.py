@@ -1,28 +1,12 @@
-def getInputFile():
-    f = open('M:\\project\\atcoder\\src\\sample.txt', 'r')
-    datalist = f.readlines()
-    f.close()
-    return datalist
-
-
-def removeReturncd(str):
-    return str.rstrip('\n')
-
-
-inputs = getInputFile()
-
-# ここから入れ替える
-
-
 def getNextDist(nowdist):
     nextdist = nowdist + 1
-    if nextdist > 4:
+    if nowdist > 4:
         return 1
     return nextdist
 
 
-n = int(inputs[0])
-t = inputs[1].split()
+n = int(input())
+t = input().split()
 tarr = list(t[0])
 
 distmap = {1: 1, 2: -1, 3: -1, 4: 1}

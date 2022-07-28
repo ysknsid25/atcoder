@@ -1,4 +1,5 @@
 # 文字列を受け取る場合
+import math
 from this import d
 
 
@@ -73,5 +74,7 @@ for v in d.values():
     print(v)
 
 # 平方根の計算
-import math
 math.sqrt(x)
+
+# 辞書の初期化
+map = {"app": 1, "pen": 2}
