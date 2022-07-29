@@ -81,3 +81,9 @@ map = {"app": 1, "pen": 2}
 
 # 配列の要素に含まれる値の個数をカウントする
 arr.count('search')
+
+# 文字列のtrim
+str = "hogehoge"
+result = str[0:1]  # h
+result = str[:1]  # h
+result = str[-1:]  # e
