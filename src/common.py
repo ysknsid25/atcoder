@@ -87,3 +87,17 @@ str = "hogehoge"
 result = str[0:1]  # h
 result = str[:1]  # h
 result = str[-1:]  # e
+
+# 配列 ソート
+arr.sort()
+
+# 配列 降順ソート
+arr.sort(reverse=True)
+
+# ソートし新たなリストを作成
+new_list = sorted(org_list)
+
+# 配列から文字列を生成
+A = ["a", "b", "c"]
+StrA = "".join(A)
+print(StrA)

@@ -1,0 +1,5 @@
+str = input()
+strarr = list(str)
+strarr.sort()
+result = "".join(strarr)
+print(result)
