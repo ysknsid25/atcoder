@@ -63,6 +63,15 @@ for S in [s[i], t[i]]:
 # 配列の要素の追加
 arr.append('youso')
 
+# 指定した位置の配列の要素を削除し、値を取得する
+arr.pop(index)
+
+# 指定した値が配列のどのインデックスにあるかを検索
+# 配列に含まれているか？を調べてからでないと、.indexはエラーを吐く
+result = 0 in mylist
+idx = mylist.index(3)  # mylistに含まれる整数値3の最小のインデックスを求める
+print(idx)  # 5
+
 # 文字列型への変換
 str(notexistx)
 
