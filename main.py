@@ -14,30 +14,16 @@ inputs = getInputFile()
 # ここから入れ替える
 
 
-def getNextDist(nowdist):
-    nextdist = nowdist + 1
-    if nextdist > 4:
-        return 1
-    return nextdist
+n, q = map(int, inputs[0].split())
+s = inputs[1]
 
-
-n = int(inputs[0])
-t = inputs[1].split()
-tarr = list(t[0])
-
-distmap = {1: 1, 2: -1, 3: -1, 4: 1}
-
-nowdist = 1
-x = 0
-y = 0
-for i in range(n):
-    direct = tarr[i]
-    if direct == "S":
-        if nowdist == 1 or nowdist == 3:
-            x = x + distmap[nowdist]
-        if nowdist == 2 or nowdist == 4:
-            y = y + distmap[nowdist]
+t = 0
+for i in range(2, len(inputs)):
+    query = inputs[i].split()
+    direct = query[0]
+    posi = int(query[1])
+    if direct == '1':
+        nowposi = nextbeginposi(posi, n)
     else:
-        nowdist = getNextDist(nowdist)
-
-print(str(x) + " " + str(y))
+        outposi = nextbeginposi((nowposi+posi), n)
+        print(s[outposi-1:outposi])
