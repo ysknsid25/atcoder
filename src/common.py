@@ -110,3 +110,19 @@ new_list = sorted(org_list)
 A = ["a", "b", "c"]
 StrA = "".join(A)
 print(StrA)
+
+# mapをキーで昇順ソート
+dic = {"X": 80, "A": 200, "E": 5, "R": 20, "S": 40}
+dic2 = sorted(dic.items())
+
+# mapをキーで降順ソート
+dic2 = sorted(dic.items(), reverse=True)
+print(dic2)
+
+# mapをvalueで昇順ソート
+dic2 = sorted(dic.items(), key=lambda x: x[1])
+print(dic2)
+
+# mapをvalueで降順ソート
+dic2 = sorted(dic.items(), key=lambda x: x[1], reverse=True)
+print(dic2)

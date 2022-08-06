@@ -1,21 +1,35 @@
 n = int(input())
-s = int(input())
+s = input()
 w = list(map(int, input().split()))
 
+sarr = list(s)
 wmap = {}
-sortedw = w.sort()
 for i in range(n):
     wi = w[i]
-    tmpArr = []
     if wi in wmap:
-        tmpArr = wmap[wi]
-    tmpArr.append(wi)
-    wmap[wi] = tmpArr
+        tmp = list(wmap[wi])
+        tmp.append(i)
+        wmap[wi] = tmp
+    else:
+        wmap[wi] = [i]
 
-sarr = list(s)
+sortedwmap = sorted(wmap.items())
+
 now = 0
-for i in range(len(s)):
-    if sarr[i] == "1":
+for judge in sarr:
+    if judge == "1":
         now += 1
 
+max = now
 ans = now
+for judgetuple in sortedwmap:
+    whoarr = judgetuple[1]
+    for who in whoarr:
+        if s[who] == "1":
+            ans -= 1
+        else:
+            ans += 1
+    if ans > max:
+        max = ans
+
+print(max)
