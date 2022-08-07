@@ -82,6 +82,9 @@ for k in d:
 for v in d.values():
     print(v)
 
+for k, v in d.items():
+    print(k, v)
+
 # 平方根の計算
 math.sqrt(x)
 
