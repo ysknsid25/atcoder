@@ -2,24 +2,24 @@ import math
 n, k, x = map(int, input().split())
 a = list(map(int, input().split()))
 
+# 最初の金額の最大値
 remainList = a
 couponTotal = 0
 paysum = 0
+discountsum = k*x
 
 for i in range(0, n):
-    remainList[i] = a[i] % k
-    couponTotal += math.floor(a[i]/x)
-    paysum += a[i]
-
+    tmpa = a[i]
+    remainList[i] = tmpa % x
+    couponTotal += tmpa//x
+    paysum += tmpa
+ans = paysum
 if k <= couponTotal:
-    result = paysum - (couponTotal*x)
+    ans = paysum - discountsum
+    print(ans)
 else:
-    result = paysum - (couponTotal*x)
-    remaincoupon = couponTotal - k
+    ans = paysum - (x*couponTotal)
+    rem = k - couponTotal
     remainList.sort(reverse=True)
-    for i in range(0, len(remainList)):
-        result -= remainList[i]
-        remaincoupon -= 1
-        if result == 0 or remaincoupon == 0:
-            break
-print(result)
+    ans -= sum(remainList[:rem])
+    print(ans)
