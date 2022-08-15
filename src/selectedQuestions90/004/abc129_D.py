@@ -5,9 +5,8 @@ arr = []
 for i in range(0, h):
   tmp = list(map(str, input().split()))
   arr.append(list(tmp[0]))
-  
-sumarr = [[0] * w] * h
 
+r = [[0] * w] * h
 for i in range(0, h):
   rowarr = arr[i]
   tmparr = [0] * w
@@ -28,7 +27,19 @@ for i in range(0, h):
         else:
           break
         rnow += 1
-      # 左半分を調べる
+      tmparr[j] = rcnt
+  r[i] = tmparr
+
+l = [[0] * w] * h
+for i in range(0, h):
+  rowarr = arr[i]
+  tmparr = [0] * w
+  for j in range(0, w):
+    mytxt = rowarr[j]
+    cnt = 0
+    if mytxt == "#": 
+      continue
+    else:
       lend = 0
       lnow = j-1
       lcnt = 0
@@ -39,12 +50,12 @@ for i in range(0, h):
         else:
           break
         lnow -= 1
-      cnt = rcnt + lcnt
-      tmparr[j] = cnt
-  sumarr[i] = tmparr
+      tmparr[j] = lcnt
+  l[i] = tmparr
 
-sumarr2 = [[0] * h] * w
 arr_t = [list(x) for x in zip(*arr)]
+
+u = [[0] * h] * w
 for i in range(0, w):
   rowarr = arr_t[i]
   tmparr = [0] * h
@@ -65,6 +76,19 @@ for i in range(0, w):
         else:
           break
         rnow += 1
+      tmparr[j] = rcnt
+  u[i] = tmparr
+
+d = [[0] * h] * w
+for i in range(0, w):
+  rowarr = arr_t[i]
+  tmparr = [0] * h
+  for j in range(0, h):
+    mytxt = rowarr[j]
+    cnt = 0
+    if mytxt == "#": 
+      continue
+    else:
       # 左半分を調べる
       lend = 0
       lnow = j-1
@@ -76,14 +100,13 @@ for i in range(0, w):
         else:
           break
         lnow -= 1
-      cnt = rcnt + lcnt
-      tmparr[j] = cnt
-  sumarr2[i] = tmparr
+      tmparr[j] = lcnt
+  d[i] = tmparr
 
 maxcnt = 0
 for i in range(0, h):
   for j in range(0, w):
-    tmpmax = sumarr[i][j] + sumarr2[j][i] -1
+    tmpmax = l[i][j] + r[i][j] + u[j][i] + d[j][i] -1
     if tmpmax > maxcnt:
       maxcnt = tmpmax
 
