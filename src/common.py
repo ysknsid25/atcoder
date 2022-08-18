@@ -129,3 +129,9 @@ print(dic2)
 # mapをvalueで降順ソート
 dic2 = sorted(dic.items(), key=lambda x: x[1], reverse=True)
 print(dic2)
+
+# 進数変換
+def Base_10_to_n(n, b):
+    if n // b:
+        return Base_10_to_n(n // b, b) + str(n % b)
+    return str(n % b)
