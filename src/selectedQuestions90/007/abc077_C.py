@@ -10,15 +10,14 @@ b.sort()
 c.sort()
 
 cnt = 0
-for i in a:
-  numb = bisect.bisect_right(b, i)
-  rangeb = 0
-  if numb != 0:
-    rangeb = numb
-  for j in range(rangeb, n):
-      valb = b[j]
-      numc = bisect.bisect_right(c, valb)
-      tmp = n - numc
-      cnt += tmp
+lenc = len(c)
+
+for i in b:
+    tmpa = bisect.bisect_left(a, i)
+    tmpc = bisect.bisect_right(c, i)
+    numa = tmpa
+    numc = lenc - tmpc
+    num = numa * numc
+    cnt += num
 
 print(cnt)
