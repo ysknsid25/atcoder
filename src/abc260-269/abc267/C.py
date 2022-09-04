@@ -1,15 +1,21 @@
-import numpy as np
 n, m = map(int, input().split())
 a = list(map(int, input().split()))
 
-maxnum = 0
-mlist = np.array([i for i in (1, m) ])
-for i in range(0, n):
-  if (i+m) > n:
-    break
-  part = np.array(a[i:(i+m)])
-  tmp = 0
-  tmp = sum(part * mlist)
-  maxnum = max(tmp, maxnum)
+s = 0
+t = 0
+for i in range(0, m):
+  s += a[i] * (i+1) 
+  t += a[i]
+
+maxnum = s
+for i in range(0, n-m):
+  
+  ns = s + (m*a[i+m]) - t
+  nt = t - a[i] + a[i+m]
+
+  maxnum = max(maxnum, ns)
+
+  s = ns
+  t = nt
 
 print(maxnum)
