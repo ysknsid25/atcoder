@@ -149,3 +149,7 @@ def pf(n):
     if rem != 1:
       p.append(rem)
   return p
+
+# 最小公倍数
+def lcm(a, b):
+  return (a*b)//math.gcd(a,b)
