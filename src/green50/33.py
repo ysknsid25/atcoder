@@ -1,3 +1,4 @@
+# 重要例題 UnionFind
 class UnionFind:
   def __init__(self, n):
     self.n = n
