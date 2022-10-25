@@ -216,3 +216,6 @@ def prime_factorize(N):
     if N!=1:
         prime_list.append(N)
     return prime_list
+
+# 文字列を反転させる
+ans = ans[::-1]
