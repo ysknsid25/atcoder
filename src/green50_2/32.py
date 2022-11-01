@@ -8,5 +8,4 @@ while i*i <= 2*n:
     if x%2 != y%2:
       ans += 2
   i+=1
-
 print(ans)
