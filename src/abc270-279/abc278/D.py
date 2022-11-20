@@ -1,9 +1,26 @@
+def writeMemo(memo, i, x, initVal):
+  if i in memo:
+    tmp = memo[i]
+    tmp += x
+    memo[i] = tmp
+  else:
+    memo[i] = initVal + x
+  return memo
+
+def readMemo(memo, i, initVal):
+  num = initVal
+  if i in memo:
+    num = memo[i]
+  return num
+
 n = int(input())
 a = [0] + list(map(int,input().split()))
 q = int(input())
 initVal = -1
-isInit = False
-beforecnt = -1
+memo = {}
+for i in range(n+1):
+  num = a[i]
+  memo[i] = num
 
 for cnt in range(q):
   s = input()
@@ -12,18 +29,11 @@ for cnt in range(q):
   if t=="1":
     t,x = map(int, s.split())
     initVal = x
-    if isInit:
-      beforecnt = cnt
-    isInit = True
+    memo = {}
   elif t=="2":
     t,i,x = map(int, s.split())
-    if initVal != a[i]:
-      a[i] += x
-    else:
-      a[i] = initVal + x
+    memo = writeMemo(memo, i, x, initVal)
   else:
     t,i = map(int, s.split())
-    if not isInit and initVal != a[i]:
-      print(a[i])
-    else:
-      print(initVal)
+    num = readMemo(memo, i, initVal)
+    print(num)
