@@ -1,5 +1,3 @@
-from collections import deque
-
 n=int(input())
 p=[0] + list(map(int, input().split()))
 maxsc = sum(p)
