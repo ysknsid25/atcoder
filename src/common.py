@@ -131,91 +131,114 @@ dic2 = sorted(dic.items(), key=lambda x: x[1], reverse=True)
 print(dic2)
 
 # 進数変換
+
+
 def Base_10_to_n(n, b):
     if n // b:
         return Base_10_to_n(n // b, b) + str(n % b)
     return str(n % b)
 
 # 素因数分解
+
+
 def pf(n):
-  num = int(pow(n, 0.5))
-  rem = n
-  p = []
-  for i in range(2, num+1):
-    while(rem % i == 0):
-      rem = rem // i
-      p.append(i)
-  else:
-    if rem != 1:
-      p.append(rem)
-  return p
+    num = int(pow(n, 0.5))
+    rem = n
+    p = []
+    for i in range(2, num+1):
+        while(rem % i == 0):
+            rem = rem // i
+            p.append(i)
+    else:
+        if rem != 1:
+            p.append(rem)
+    return p
 
 # 最小公倍数
+
+
 def lcm(a, b):
-  return (a*b)//math.gcd(a,b)
+    return (a*b)//math.gcd(a, b)
+
+# 最大公約数
+
+
+def gcd(x, y):
+    if y == 0:
+        return x
+    return gcd(y, x % y)
+
 
 """
 Union Find
 """
-class UnionFind:
-  def __init__(self, n):
-    self.n = n
-    self.parent_size=[-1] * n
 
-  """
+
+class UnionFind:
+    def __init__(self, n):
+        self.n = n
+        self.parent_size = [-1] * n
+
+    """
   リーダーが同じなら何もしない
   リーダーが違う場合、グループの人数が少ない方を、大きい方のグループへ統合する
   """
-  def merge(self, a, b):
-    x, y = self.leader(a), self.leader(b)
-    if x == y:
-      return
-    if abs(self.parent_size[x]) < abs(self.parent_size[y]):
-      x, y = y, x
-    self.parent_size[x] += self.parent_size[y]
-    self.parent_size[y] = x
-    return
-  
-  def same(self, a, b):
-    return self.leader[a] == self.leader[b]
 
-  """
+    def merge(self, a, b):
+        x, y = self.leader(a), self.leader(b)
+        if x == y:
+            return
+        if abs(self.parent_size[x]) < abs(self.parent_size[y]):
+            x, y = y, x
+        self.parent_size[x] += self.parent_size[y]
+        self.parent_size[y] = x
+        return
+
+    def same(self, a, b):
+        return self.leader[a] == self.leader[b]
+
+    """
   再帰で根にいるリーダーを探しに行く
   自分自身がリーダーなら自分を返す
   """
-  def leader(self, a):
-    if self.parent_size[a] < 0:
-      return a
-    self.parent_size[a] = self.leader(self.parent_size[a])
-    return self.parent_size[a]
 
-  """
+    def leader(self, a):
+        if self.parent_size[a] < 0:
+            return a
+        self.parent_size[a] = self.leader(self.parent_size[a])
+        return self.parent_size[a]
+
+    """
   aが所属するグループのサイズ(人数)を返す
   """
-  def size(self, a):
-    return abs(self.parent_size[self.leader(a)])
 
-  def groups(self):
-    result = [[] for _ in range(self.n)]
-    for i in range(self.n):
-      result[self.leader(i)].append(i)
-    return [r for r in result if r != []]
+    def size(self, a):
+        return abs(self.parent_size[self.leader(a)])
+
+    def groups(self):
+        result = [[] for _ in range(self.n)]
+        for i in range(self.n):
+            result[self.leader(i)].append(i)
+        return [r for r in result if r != []]
 
 # 素因数分解
+
+
 def prime_factorize(N):
-    if N==1:
+    if N == 1:
         return [1]
-    prime_list=[]
-    i=2
-    while i*i<=N:
-        if N%i==0:
+    prime_list = []
+    i = 2
+    while i*i <= N:
+        if N % i == 0:
             prime_list.append(i)
-            N//=i
+            N //= i
         else:
-            i+=1
-    if N!=1:
+            i += 1
+    if N != 1:
         prime_list.append(N)
     return prime_list
+
 
 # 文字列を反転させる
 ans = ans[::-1]
