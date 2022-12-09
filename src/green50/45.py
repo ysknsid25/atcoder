@@ -3,12 +3,10 @@ def nCr_mod(n, r, mod):
     for i in range(n-r+1, n+1):
         nu *= i
         nu %= mod
-
     de = 1
     for i in range(1, r+1):
         de *= i
         de %= mod
-
     de_inv = pow(de, -1, mod)
     return nu*de_inv % mod
 
