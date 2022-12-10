@@ -1,3 +1,4 @@
+#! 高速な素因数分解
 from math import gcd
 
 def fast_prime_fact(D,x):
