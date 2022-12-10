@@ -308,3 +308,14 @@ class SegTree:
             l//=2
             r//=2
         return result
+
+#! 深さ優先探索(DFS)
+seen=[]
+def dfs(seen,g,v):
+    seen[v]=True
+    for to in g:
+        if seen[to]:
+            continue
+        #! 再帰的に探索
+        def(seen,g,to)
+    return seen
