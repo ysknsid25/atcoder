@@ -1,0 +1,19 @@
+"""
+マンハッタン距離
+  (x1,y1)と(x2,y2)のマンハッタン距離は、|x1-x2|+|y1-y2|
+チェビシェフ距離
+  (x1,y1)と(x2,y2)のチェビシェフ距離は、max(|x1-x2|,|y1-y2|)
+マンハッタン距離→チェビシェフ距離への変換
+  (x1,y1)と(x2,y2)のマンハッタン距離=(x1+y1,x1-y1),(x2+y2,x2-y2)間のチェビシェフ距離
+"""
+n=int(input())
+x_list=[]
+y_list=[]
+for i in range(n):
+  x,y=map(int,input().split())
+  x_list.append(x+y)
+  y_list.append(x-y)
+x_chebi=abs(min(x_list)-max(x_list))
+y_chebi=abs(min(y_list)-max(y_list))
+ans=max(x_chebi,y_chebi)
+print(ans)
