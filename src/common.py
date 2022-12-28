@@ -337,3 +337,9 @@ for l in range(n):
     #lをインクリする準備
     #if r==l: r+=1
     #else: sum-=a[l] 
+
+def sum_formula(a,b):
+    """
+    和の公式を使って、a~bまでの和を計算する。
+    """
+    return (b-a+1)*(a+b)//2
