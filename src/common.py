@@ -195,7 +195,7 @@ class UnionFind:
         return
 
     def same(self, a, b):
-        return self.leader[a] == self.leader[b]
+        return self.leader(a) == self.leader(b)
 
     """
   再帰で根にいるリーダーを探しに行く
@@ -244,6 +244,8 @@ def prime_factorize(N):
 ans = ans[::-1]
 
 # 組み合わせ割算のための関数
+
+
 def nCr_mod(n, r, mod=10**9+7):
     nu = 1
     for i in range(n-r+1, n+1):
@@ -256,89 +258,101 @@ def nCr_mod(n, r, mod=10**9+7):
     de_inv = pow(de, -1, mod)
     return nu*de_inv % mod
 
+
 #! セグメントツリー
 """
 演算を行う。必要に応じて変更する
 """
-def segfunc(x,y):
-    return x^y
+
+
+def segfunc(x, y):
+    return x ^ y
+
 
 class SegTree:
-    def __init__(self,x_list,init,segfunc):
-        self.init=init
-        self.segfunc=segfunc
-        self.Height=len(x_list).bit_length()+1
-        self.Tree=[init]*(2**self.Height)
-        self.num=2**(self.Height-1)
+    def __init__(self, x_list, init, segfunc):
+        self.init = init
+        self.segfunc = segfunc
+        self.Height = len(x_list).bit_length()+1
+        self.Tree = [init]*(2**self.Height)
+        self.num = 2**(self.Height-1)
         for i in range(len(x_list)):
-            self.Tree[2**(self.Height-1)+i]=x_list[i]
-        for i in range(2**(self.Height-1)-1,0,-1):
-            self.Tree[i]=segfunc(self.Tree[2*i],self.Tree[2*i+1])
+            self.Tree[2**(self.Height-1)+i] = x_list[i]
+        for i in range(2**(self.Height-1)-1, 0, -1):
+            self.Tree[i] = segfunc(self.Tree[2*i], self.Tree[2*i+1])
 
         """指定のインデックスの値を返す
         """
-    def select(self,k):
+
+    def select(self, k):
         return self.Tree[k+self.num]
 
         """指定のインデックスの値を更新する
         """
-    def update(self,k,x):
-        i=k+self.num
-        self.Tree[i]=x
-        while i>1:
-            if i%2==0:
-                self.Tree[i//2]=self.segfunc(self.Tree[i],self.Tree[i+1])
+
+    def update(self, k, x):
+        i = k+self.num
+        self.Tree[i] = x
+        while i > 1:
+            if i % 2 == 0:
+                self.Tree[i//2] = self.segfunc(self.Tree[i], self.Tree[i+1])
             else:
-                self.Tree[i//2]=self.segfunc(self.Tree[i-1],self.Tree[i])
-            i//=2
+                self.Tree[i//2] = self.segfunc(self.Tree[i-1], self.Tree[i])
+            i //= 2
 
         """指定区間についての演算結果を返す
         """
-    def query(self,l,r):
-        result=self.init
-        l+=self.num
-        r+=self.num+1
 
-        while l<r:
-            if l%2==1:
-                result=self.segfunc(result,self.Tree[l])
-                l+=1
-            if r%2==1:
-                result=self.segfunc(result,self.Tree[r-1])
-            l//=2
-            r//=2
+    def query(self, l, r):
+        result = self.init
+        l += self.num
+        r += self.num+1
+
+        while l < r:
+            if l % 2 == 1:
+                result = self.segfunc(result, self.Tree[l])
+                l += 1
+            if r % 2 == 1:
+                result = self.segfunc(result, self.Tree[r-1])
+            l //= 2
+            r //= 2
         return result
 
+
 #! 深さ優先探索(DFS)
-seen=[]
-def dfs(seen,g,v):
-    seen[v]=True
+seen = []
+
+
+def dfs(seen, g, v):
+    seen[v] = True
     for to in g:
         if seen[to]:
             continue
         #! 再帰的に探索
-        def(seen,g,to)
+        def(seen, g, to)
     return seen
+
 
 #! 尺取法
 # 「条件」を満たす区間(連続する部分列)のうち、最小の長さを求める
 # 「条件」を満たす区間(連続する部分列)のうち、最大の長さを求める
 # 「条件」を満たす区間(連続する部分列)を数え上げる
-r=0
+r = 0
 for l in range(n):
-    #rを1個進めた時に条件を満たす
-    while r<n and r:
-        #実際にrを1進めた時の処理
-        #ex) sum+=a[r]
-        r+=1
-    #breakした状態はrが条件を満たす最大なので何かする
-    #ex) res+=(r-l)
+    # rを1個進めた時に条件を満たす
+    while r < n and r:
+        # 実際にrを1進めた時の処理
+        # ex) sum+=a[r]
+        r += 1
+    # breakした状態はrが条件を満たす最大なので何かする
+    # ex) res+=(r-l)
 
-    #lをインクリする準備
+    # lをインクリする準備
     #if r==l: r+=1
-    #else: sum-=a[l] 
+    # else: sum-=a[l]
 
-def sum_formula(a,b):
+
+def sum_formula(a, b):
     """
     和の公式を使って、a~bまでの和を計算する。
     """
