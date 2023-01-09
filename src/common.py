@@ -357,3 +357,7 @@ def sum_formula(a, b):
     和の公式を使って、a~bまでの和を計算する。
     """
     return (b-a+1)*(a+b)//2
+
+#! 組み合わせの総数を計算
+def combinations_count(n, k):
+    return math.factorial(n) // (math.factorial(n - k) * math.factorial(k))
