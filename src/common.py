@@ -361,3 +361,7 @@ def sum_formula(a, b):
 #! 組み合わせの総数を計算
 def combinations_count(n, k):
     return math.factorial(n) // (math.factorial(n - k) * math.factorial(k))
+
+#! 3点が1直線上にあるかどうか
+def checkAline(x,x1,x2,y,y1,y2):
+    return (y2-y)*(x1-x) == (y1-y)*(x2-x)
