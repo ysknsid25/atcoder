@@ -329,7 +329,7 @@ def dfs(seen, g, v):
         if seen[to]:
             continue
         #! 再帰的に探索
-        def(seen, g, to)
+        dfs(seen, g, to)
     return seen
 
 
