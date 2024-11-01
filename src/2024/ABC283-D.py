@@ -16,8 +16,10 @@ for i in range(len(s)):
     elif c == ')':
         back = stack.pop()
         # lastでループを回して、valueがback以上i未満のdを0にする
-        for j in range(back, i):
-            d[c] = 0
+        for k, v in last.items():
+            if back <= v < i:
+                d[k] = 0
     else:
         d[c] = 1
         last[c] = i
+print("Yes")
