@@ -2,7 +2,6 @@
 import math
 from this import d
 
-
 S = input()
 
 # 整数を受け取る場合
@@ -365,3 +364,18 @@ def combinations_count(n, k):
 #! 3点が1直線上にあるかどうか
 def checkAline(x,x1,x2,y,y1,y2):
     return (y2-y)*(x1-x) == (y1-y)*(x2-x)
+
+# 二分探索
+def bisect(list, search_val):
+    left = 1
+    right = len(list)
+    ans = 0
+    while 1 < right - left:
+        i = (left + right) // 2
+        # 探索値によってアレンジはいる
+        if list[i] > search_val:
+            right = i
+        else:
+            left = i
+        ans = left
+    return list[ans]
