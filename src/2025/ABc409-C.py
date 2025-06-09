@@ -56,4 +56,4 @@ if __name__ == "__main__":
     
     # 答えを計算して出力
     result = count_equilateral_triangles(N, L, actual_distances)
-    print(result)    print(result)
+    print(result)
